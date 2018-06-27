@@ -8,7 +8,7 @@
   </param>
 
   <module id="read-obo" class="OBOReader">
-    <oboFiles>resources/OntoBiotope-Habitat.obo</oboFiles>
+    <oboFiles>/as-c/resources/OntoBiotope-Habitat.obo</oboFiles>
     <pathFeature>path</pathFeature>
   </module>
 
@@ -212,7 +212,7 @@
   </module>
 
 <module id="analyze" class="TomapTrain">
-    <outFile>resources/OntoBiotope-Habitat.tomap</outFile>
+    <outFile>/as-c/resources/OntoBiotope-Habitat.tomap</outFile>
     <workingDir>yatea-train</workingDir>
     <configDir>/as-c/resources/config-habitats/</configDir> 
     <localeDir>/usr/share/YaTeA/locale</localeDir>

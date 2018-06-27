@@ -6,11 +6,11 @@
   
   <module id="read" class="XMLReader">
     <sourcePath>test.xml</sourcePath>
-    <xslTransform>plans/microbes-pubmed2alvisnlp.xslt</xslTransform>
+    <xslTransform>/as-c/plans/microbes-pubmed2alvisnlp.xslt</xslTransform>
   </module>
 
   <mesh-path class="FileMapper">
-    <mappingFile>resources/2017MeshTree.txt</mappingFile>
+    <mappingFile>/as-c/resources/2017MeshTree.txt</mappingFile>
     <target>documents.(sections:mesh|sections:chemical)</target>
     <form>@UI</form>
     <targetFeatures>mesh-path,,mesh-name</targetFeatures>
@@ -30,9 +30,9 @@
     <setFeatures/>
   </module>
 
-  <import file="plans/entities.plan"/>
+  <import file="/as-c/plans/entities.plan"/>
 
-  <import file="plans/relations.plan"/>
+  <import file="/as-c/plans/relations.plan"/>
 
   <sequence id="output">
 

@@ -34,7 +34,7 @@
   <sequence id="coreferences">
     <sequence id="mono-anaphora">
       <module id="anaphora" class="TabularProjector">
-	<dictFile>resources/anaphoraLexicon.txt</dictFile>
+	<dictFile>/as-c/resources/anaphoraLexicon.txt</dictFile>
 	<targetLayerName>mono-anaphora</targetLayerName>
 	<subject layer="words" feature="form"/>
 	<caseInsensitive>true</caseInsensitive>
@@ -265,7 +265,7 @@
     
     <sequence id="multi-ante-anaphora">
       <module id="bi-anaphora" class="TabularProjector">
-	<dictFile>resources/biAnaphoraLexicon.txt</dictFile>
+	<dictFile>/as-c/resources/biAnaphoraLexicon.txt</dictFile>
 	<targetLayerName>bi-anaphora</targetLayerName>
 	<subject layer="words" feature="form"/>
 	<caseInsensitive>true</caseInsensitive>

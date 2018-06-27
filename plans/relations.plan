@@ -6,7 +6,7 @@
       <targetLayerName>antecedent</targetLayerName>
     </module>
 
-    <import file="plans/anaphora.plan"/>
+    <import file="/as-c/plans/anaphora.plan"/>
   </sequence>
 
   <sequence id="predictions">

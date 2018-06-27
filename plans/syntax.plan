@@ -9,7 +9,7 @@
       <addToLayer/>
     </module>
 
-    <import file="plans/segmentation.plan"/>
+    <import file="/as-c/plans/segmentation.plan"/>
   </sequence>
 
 

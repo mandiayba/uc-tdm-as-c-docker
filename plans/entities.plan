@@ -4,7 +4,7 @@
     <module id="dict" class="TabularProjector">
       <!-- <sectionFilter>@name == "title" or @name == "abstract"</sectionFilter> -->
       <targetLayerName>taxa</targetLayerName>
-      <dictFile>resources/taxa+id_full.txt</dictFile>
+      <dictFile>/as-c/resources/taxa+id_full.txt</dictFile>
       <matchStartCaseInsensitive/>
       <valueFeatures>,taxid,canonical-name,path,pos,rank</valueFeatures>
       <constantAnnotationFeatures>source=NCBI</constantAnnotationFeatures>
@@ -18,7 +18,7 @@
       <module id="taxids" class="FileMapper">
     	<target>documents.sections.layer:taxa</target>
     	<form>@taxid</form>
-	<mappingFile>resources/taxid_microorganisms.txt</mappingFile>
+	<mappingFile>/as-c/resources/taxid_microorganisms.txt</mappingFile>
       	<targetFeatures>microorganism</targetFeatures>
       </module>
       
@@ -36,12 +36,12 @@
       <addToLayer/>
     </module>
     
-    <import file="plans/strains-1.plan"/>
+    <import file="/as-c/plans/strains-1.plan"/>
   </sequence>
 
 <!-- Project stopwords -->
 <module id="stopwordsprojector" class="TabularProjector">
-  <dictFile>resources/stopwords_EN.txt</dictFile>
+  <dictFile>/as-c/resources/stopwords_EN.txt</dictFile>
   <targetLayerName>stopwords</targetLayerName>
   <valueFeatures>stopwords</valueFeatures>
   <constantAnnotationFeatures>ne-type=stopwords</constantAnnotationFeatures>
@@ -49,7 +49,7 @@
 </module>
 
 <module id="stopwordsprojector-microorganism" class="TabularProjector">
-  <dictFile>resources/microorganism_stopwords.txt</dictFile>
+  <dictFile>/as-c/resources/microorganism_stopwords.txt</dictFile>
   <targetLayerName>microorganism-stopwords</targetLayerName>
   <valueFeatures>stopwords</valueFeatures>
   <constantAnnotationFeatures>ne-type=stopwords</constantAnnotationFeatures>
@@ -73,7 +73,7 @@
     </module>
   </sequence>
 
-  <import file="plans/syntax.plan" id="syntax"/>
+  <import file="/as-c/plans/syntax.plan" id="syntax"/>
 
   <genia class="GeniaTagger">
     <geniaDir>/alvisnlp/psoft/geniatagger-3.0.2</geniaDir>
@@ -120,15 +120,15 @@
     <setFeatures/>
   </module>
 
-  <import file="plans/strains-2.plan"/>
+  <import file="/as-c/plans/strains-2.plan"/>
 
   <sequence id="microorganisms-after-strains">
     <module id="taxids" class="FileMapper">
       <target>documents.sections.layer:taxa</target>
       <form>@taxid</form>
       <!--<operator>prefix</operator>-->
-      <mappingFile>resources/taxid_microorganisms.txt</mappingFile>
-      <!--<mappingFile>resources/microorganisms.txt</mappingFile>-->
+      <mappingFile>/as-c/resources/taxid_microorganisms.txt</mappingFile>
+      <!--<mappingFile>/as-c/resources/microorganisms.txt</mappingFile>-->
       <targetFeatures>microorganism</targetFeatures>
     </module>
     
@@ -165,7 +165,7 @@
 
   <module id="dict" class="TabularProjector">
     <targetLayerName>food-process</targetLayerName>
-    <dictFile>resources/food-process-lexicon.txt</dictFile>
+    <dictFile>/as-c/resources/food-process-lexicon.txt</dictFile>
     <matchStartCaseInsensitive/>
     <keyIndex>0,1,2</keyIndex>
     <valueFeatures>string,token,lem,concept-id</valueFeatures>
@@ -173,7 +173,7 @@
   </module>
   <module id="dict-2" class="TabularProjector">
     <targetLayerName>food-process2</targetLayerName>
-    <dictFile>resources/food-process-lexicon.txt</dictFile>
+    <dictFile>/as-c/resources/food-process-lexicon.txt</dictFile>
     <matchStartCaseInsensitive/>
     <keyIndex>0,1,2</keyIndex>
     <valueFeatures>string,token,lem,concept-id</valueFeatures>
@@ -194,7 +194,7 @@
   <term-extraction>
 
     <!-- Modify some pos tags and lemma in order to maximize term extraction-->
-    <import file="plans/pos-tag-lemma-postprocessing.plan"/>
+    <import file="/as-c/plans/pos-tag-lemma-postprocessing.plan"/>
     
     <!-- Remove final 's' and lower case words to take care of potential lemmatization errors -->
     <module id="remove-plural" class="Action">
@@ -210,7 +210,7 @@
 
     <!-- Project variant lexicon on words and add variant feature -->
     <module id="variant-projection" class="TabularProjector">
-      <dictFile>resources/noun_adj_and_spelling_variants</dictFile>
+      <dictFile>/as-c/resources/noun_adj_and_spelling_variants</dictFile>
       <targetLayerName>variants</targetLayerName>
       <keyIndex>0</keyIndex>
       <valueFeatures>string,variant</valueFeatures>
@@ -243,7 +243,7 @@
       <configDir>/as-c/resources/config-habitats/</configDir>
       <localeDir>/usr/share/YaTeA/locale</localeDir>
       <yateaExecutable>/usr/local/bin/yatea</yateaExecutable>
-      <rcFile>plans/yatea.rc</rcFile>
+      <rcFile>/as-c/plans/yatea.rc</rcFile>
     </module>
 
     <!-- Run Yatea term extractor on variants -->
@@ -256,14 +256,14 @@
       <configDir>/as-c/resources/config-habitats/</configDir>
       <localeDir>/usr/share/YaTeA/locale</localeDir>
       <yateaExecutable>/usr/local/bin/yatea</yateaExecutable>
-      <rcFile>plans/yatea.rc</rcFile>
+      <rcFile>/as-c/plans/yatea.rc</rcFile>
     </module>
 
   </term-extraction>
 
   <!-- Tag and normalize Habitat entities -->
   <sequence id="habitats">
-    <import file="plans/tomap-habitats.plan"/>
+    <import file="/as-c/plans/tomap-habitats.plan"/>
 
     <module id="remove-living-org-overlapping-geo" class="Action">
       <target>documents.sections.layer:habitats[@concept-path ?= "OBT:000002" and span:Geographical]</target>
@@ -292,7 +292,7 @@
   </sequence>
 
   <!-- Tag and normalize Phenotypes entities -->
-  <import file="plans/tomap-microbial-phenotypes.plan"/>
+  <import file="/as-c/plans/tomap-microbial-phenotypes.plan"/>
 
   <!-- Filter entities spanning stopwords -->
   <module id="stopwords" class="Action">
